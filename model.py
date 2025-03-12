@@ -3,7 +3,10 @@ import torchvision.models as models
 import torch.nn as nn
 
 #loading pretrained resnet152
+model = models.resnet152(pretrained=True)
 model = models.resnet152(weights=models.ResNet152_Weights.IMAGENET1K_V2) 
+model.eval()
+
 
 #changing last layer to binary classification
 num_features = model.fc.in_features #num of input features for last layer

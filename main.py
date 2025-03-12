@@ -12,7 +12,7 @@ train_losses = []
 for epoch in range(epochs):
     model.train()
     running_loss = 0.0
-    for images, labels in train_loader:
+    for images, labels in train_dataloader:
         images, labels = images.to(device), labels.to(device)
         outputs = model(images)
         loss = loss_function(outputs, labels)
@@ -21,7 +21,7 @@ for epoch in range(epochs):
         optimizer.step()
         running_loss += loss.item()
     
-    epoch_loss = running_loss / len(train_loader)
+    epoch_loss = running_loss / len(train_dataloader)
     train_losses.append(epoch_loss)
     print(f"Epoch {epoch+1}/{epochs}, Loss: {epoch_loss:.4f}")
 
